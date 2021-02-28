@@ -2,7 +2,9 @@
   <div class="job-wrapper">
     <div :class="{ line: true, solid: !head }"></div>
     <div class="job">
-      <div class="status text-ellipsis">{{ job.status }}</div>
+      <div class="status text-ellipsis" :data-status="job.status">
+        {{ status }}
+      </div>
       <div class="name text-ellipsis">{{ job.name }}</div>
       <div class="duration">{{ duration }}</div>
     </div>
@@ -22,6 +24,18 @@ export default {
   computed: {
     duration: function () {
       return moment.utc(this.job.time).format("HH:mm:ss");
+    },
+    status: function () {
+      switch (this.job.status) {
+        case "success":
+          return "√";
+        case "fail":
+          return "!";
+        case "doing":
+          return "...";
+        default:
+          return "";
+      }
     },
   },
 };
@@ -43,6 +57,15 @@ export default {
 }
 .status {
   flex: 0 0 20px;
+}
+.status[data-status="success"] {
+  color: green;
+}
+.status[data-status="fail"] {
+  color: red;
+}
+.status[data-status="doing"] {
+  color: gray;
 }
 .name {
   flex: 1 0 20px;

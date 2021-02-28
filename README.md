@@ -10,4 +10,5 @@
 
 ## 03 [pipeline component](./03%20pipeline)
 
-基于 vue 实现 pipeline 组件, 在线预览: https://codesandbox.io/s/pipeline-ukms2
+基于 vue 实现 pipeline 组件, job 状态简单地使用 `√`, `!`, `...` 表示成功, 失败, 进行状态
+在线预览: https://codesandbox.io/s/pipeline-ukms2
